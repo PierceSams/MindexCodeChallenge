@@ -34,6 +34,7 @@ namespace CodeCodeChallenge.Tests.Integration
             _testServer.Dispose();
         }
 
+        //Verify that our number of reports for the given employee id is what we expect. 
         [TestMethod]
         public void NumberOfReports_Returns_Ok()
         {

@@ -9,5 +9,6 @@ namespace CodeChallenge.Repositories
         Compensation GetByEmployeeId(String id);
         Compensation Add(Compensation compensation);
         Task SaveAsync();
+        Compensation Remove(Compensation compensation);
     }
 }

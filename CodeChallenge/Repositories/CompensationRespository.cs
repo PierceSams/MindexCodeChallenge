@@ -22,6 +22,7 @@ namespace CodeChallenge.Repositories
 
         public Compensation Add(Compensation compensation)
         {
+            compensation.CompensationId = Guid.NewGuid().ToString();
             _employeeContext.Compensations.Add(compensation);
             return compensation;
         }
@@ -29,13 +30,11 @@ namespace CodeChallenge.Repositories
         public Compensation GetByEmployeeId(string id)
         {
             //Get compensation that has an employee with the matching id.
-            return _employeeContext.Compensations.SingleOrDefault(c => c.Employee.EmployeeId == id);
+            return _employeeContext.Compensations.Include(c => c.Employee).SingleOrDefault(c => c.Employee.EmployeeId == id);
         }
-
-        public Compensation Update(string id)
+        public Compensation Remove(Compensation compensation)
         {
-            //Get compensation that has an employee with the matching id.
-            return _employeeContext.Compensations.SingleOrDefault(c => c.Employee.EmployeeId == id);
+            return _employeeContext.Compensations.Remove(compensation).Entity;
         }
 
         public Task SaveAsync()

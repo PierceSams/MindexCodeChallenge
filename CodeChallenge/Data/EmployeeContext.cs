@@ -15,8 +15,9 @@ namespace CodeChallenge.Data
         }
        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Employee>().HasOne(e => e.Compensation).WithOne(c => c.Employee).HasForeignKey<Compensation>(c=> c.EmployeeFK);
-       }
+            modelBuilder.Entity<Employee>();
+            modelBuilder.Entity<Compensation>();
+        }
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Compensation> Compensations { get; set; }
     }

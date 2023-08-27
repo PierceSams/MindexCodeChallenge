@@ -55,12 +55,13 @@ namespace CodeChallenge.Services
             {
                 employee = _employeeRepository.GetById(employeeId);
             }
-            //If this employee has directe reports we need to add them to our count and check for more.
+            //If this employee has direct reports we need to add them to our count and check for more.
             if (employee.DirectReports != null)
             {
                 //Increment number of reports for this reporting structure.
                 reportingStructure.NumberOfReports += employee.DirectReports.Count;
-                //Loop through each found direct report and call this function again to check if they have direct reports.
+                //Loop through each found direct report and call this function again to check if they have direct reports
+                //until we get to the bottom of the tree.
                 foreach (var managedEmployee in employee.DirectReports)
                 {
                     GetNumberOfReports(managedEmployee.EmployeeId);

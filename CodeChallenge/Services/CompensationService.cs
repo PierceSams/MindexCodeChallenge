@@ -40,6 +40,25 @@ namespace CodeChallenge.Services
             return null;
         }
 
-       
+        public Compensation Replace(Compensation originalCompensation, Compensation newCompensation)
+        {
+            if (originalCompensation != null)
+            {
+                _compensationRepository.Remove(originalCompensation);
+                if (newCompensation != null)
+                {
+                    // ensure the original has been removed, otherwise EF will complain another entity w/ same id already exists
+                    _compensationRepository.SaveAsync().Wait();
+                    newCompensation.Employee = originalCompensation.Employee;
+                    _compensationRepository.Add(newCompensation);
+                    // overwrite the new id with previous compensation id
+                    newCompensation.CompensationId = originalCompensation.CompensationId;
+                }
+                _compensationRepository.SaveAsync().Wait();
+            }
+
+            return newCompensation;
+        }
     }
 }
+

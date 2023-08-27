@@ -10,6 +10,6 @@ namespace CodeChallenge.Services
     {
         Compensation GetByEmployeeId(string id);
         Compensation Create(Compensation compensation);
-        //Compensation Replace(Compensation originalCompensation, Compensation newCompensation);
+        Compensation Replace(Compensation originalCompensation, Compensation newCompensation);
     }
 }

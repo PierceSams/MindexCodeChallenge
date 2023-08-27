@@ -48,7 +48,7 @@ namespace CodeChallenge.Config
             services.AddScoped<ICompensationService, CompensationService>();
             services.AddScoped<ICompensationRepository, CompensationRespository>();
 
-            services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+            services.AddControllers();                                
         }
 
         private void SeedEmployeeDB()

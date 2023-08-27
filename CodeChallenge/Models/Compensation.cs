@@ -11,11 +11,9 @@ namespace CodeChallenge.Models
    
     public class Compensation
     {
-        public int CompensationId { get; set; }
+        public String CompensationId { get; set; }
         public Employee Employee { get; set; }
-        public string Salary { get; set; }
-        public string EffectiveDate { get; set; }
-        [ForeignKey("Employee")]
-        public string EmployeeFK { get; set; }
+        public String Salary { get; set; }
+        public String EffectiveDate { get; set; }
     }
 }
